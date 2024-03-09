@@ -81,9 +81,7 @@ install.packages(c("dplyr", "e1071", "rpart", "randomForest", "caTools", "corrpl
 
 5. Run the R script to preprocess the data, train the models and evaluate their performance.
 
-```R
-parkinsons_analysis.R
-```
+`parkinsons_analysis.R`
 
 ## Contributing
 
