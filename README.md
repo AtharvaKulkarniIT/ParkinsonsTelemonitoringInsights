@@ -69,7 +69,7 @@ A correlation heatmap is generated to explore relationships between different fe
 3. Run the R script to preprocess the data, train the models, and evaluate their performance.
 
 ```R
-Rscript parkinsons_analysis.R
+parkinsons_analysis.R
 ```
 
 ## Contributing
