@@ -1,5 +1,11 @@
 
-# Parkinson's Disease Severity Prediction
+# Parkinsons Telemonitoring Insights
+<a href="https://github.com/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights"><img src="https://sloc.xyz/github/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights" alt="LOC"/></a>
+<a href="https://github.com/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights"><img src="https://visitor-badge.laobi.icu/badge?page_id=AtharvaKulkarniIT.ParkinsonsTelemonitoringInsights" alt="Visitors"/></a>
+<a href="https://github.com/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights/stargazers"><img src="https://img.shields.io/github/stars/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights" alt="Stars Badge"/></a>
+[![GitHub Forks](https://img.shields.io/github/forks/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights.svg?style=social&label=Forks&maxAge=2592000)](https://www.github.com/AtharvaKulkarniIT/ParkinsonsTelemonitoringInsights/fork)
+[![contributors ](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
+
 
 This data science project in R aims to predict the severity of Parkinson's disease based on the UCI Parkinsons dataset using machine learning algorithms. The dataset includes various features related to Parkinson's symptoms, and we leverage decision tree, random forest, support vector machine (SVM) and XGBoost algorithms for prediction. The project also involves hyperparameter tuning and feature selection to enhance model performance.
 
