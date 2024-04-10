@@ -8,7 +8,7 @@
 
 
 
-This data science project in R aims to predict the severity of Parkinson's disease based on the UCI Parkinsons dataset using machine learning algorithms. The dataset includes various features related to Parkinson's symptoms, and we leverage decision tree, random forest, support vector machine (SVM) and XGBoost algorithms for prediction. The project also involves hyperparameter tuning and feature selection to enhance model performance.
+This data science project in R aims to predict the severity of Parkinson's disease based on the UCI Parkinsons dataset using machine learning algorithms. The dataset includes various features related to Parkinson's symptoms and we leverage decision tree, random forest, support vector machine (SVM) and XGBoost algorithms for prediction. The project also involves hyperparameter tuning and feature selection to enhance model performance.
 
 ## Table of Contents
 
@@ -63,7 +63,7 @@ Feature selection techniques are applied to identify the most relevant features,
 
 ## Evaluation
 
-The performance of each model is evaluated using metrics such as RMSE (Root Mean Squared Error), R-squared, and MAE (Mean Absolute Error).
+The performance of each model is evaluated using metrics such as RMSE (Root Mean Squared Error), R-squared and MAE (Mean Absolute Error).
 
 ## Correlation Analysis
 
