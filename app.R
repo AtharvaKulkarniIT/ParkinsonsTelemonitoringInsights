@@ -5,6 +5,11 @@ library(randomForest)
 rf_total_lasso <- readRDS("lasso_rf_model_total.rds")
 rf_motor_lasso <- readRDS("lasso_rf_model_motor.rds")
 
+# Function for min-max scaling
+min_max_scaling <- function(x,maxx,minx) {
+  (x - minx) / (maxx - minx)
+}
+
 # Unscale function
 unscale <- function(x, min_val, max_val) {
   return(x * (max_val - min_val) + min_val)
@@ -50,28 +55,28 @@ ui <- fluidPage(
     column(width = 6,
            fluidRow(
              column(6,
-                    numericInput("age", "Age", value = 0.734693878, min = 0, max = 1, step = 0.01),
-                    numericInput("Jitter", "Jitter RAP", value = 0.079287222, min = 0, max = 1, step = 0.01),
-                    numericInput("Jitter_Abs", "Jitter Abs", value = 0.071164343, min = 0, max = 1, step = 0.01),
-                    numericInput("HNR", "HNR", value = 0.085062319, min = 0, max = 1, step = 0.01),
-                    numericInput("Shimmer_APQ11", "Shimmer APQ11", value = 0.039635469, min = 0, max = 1, step = 0.01),
-                    numericInput("PPE", "PPE", value = 0.06443344, min = 0, max = 1, step = 0.01),
-                    numericInput("Jitter_motor", "Jitter", value = 0.0583904800322711, min = 0, max = 1, step = 0.01),
-                    numericInput("Shimmer_DDA_motor", "Shimmer DDA", value = 0.079266526, min = 0, max = 1, step = 0.01)
+                    numericInput("age", "Age", value = 72, min = 0, max = 1, step = 0.01),
+                    numericInput("Jitter", "Jitter RAP", value = 0.00401, min = 0, max = 1, step = 0.01),
+                    numericInput("Jitter_Abs", "Jitter Abs", value = 0.0000338, min = 0, max = 1, step = 0.01),
+                    numericInput("HNR", "HNR", value = 21.64, min = 0, max = 1, step = 0.01),
+                    numericInput("Shimmer_APQ11", "Shimmer APQ11", value = 0.01662, min = 0, max = 1, step = 0.01),
+                    numericInput("PPE", "PPE", value = 0.16006, min = 0, max = 1, step = 0.01),
+                    numericInput("Jitter_motor", "Jitter", value = 0.00662, min = 0, max = 1, step = 0.01),
+                    numericInput("Shimmer_DDA_motor", "Shimmer DDA", value = 0.04314, min = 0, max = 1, step = 0.01)
              )
            )
     ),
     column(width = 6,
            fluidRow(
              column(6,
-                    numericInput("Shimmer_total", "Shimmer", value = 0.098029793, min = 0, max = 1, step = 0.01),
-                    numericInput("Shimmer_APQ3_total", "Shimmer APQ3", value = 0.064324419, min = 0, max = 1, step = 0.01),
-                    numericInput("Shimmer_dB_total", "Shimmer dB", value = 0.098029793, min = 0, max = 1, step = 0.01),
-                    numericInput("Jitter_PPQ5_total", "Jitter PPQ5", value = 0.067543009, min = 0, max = 1, step = 0.01),
-                    numericInput("Shimmer_APQ5", "Shimmer APQ5", value = 0.05176393, min = 0, max = 1, step = 0.01),
-                    numericInput("DFA", "DFA", value = 0.194543971, min = 0, max = 1, step = 0.01),
-                    numericInput("NHR_motor", "NHR", value = 0.018722576, min = 0, max = 1, step = 0.01),
-                    numericInput("Jitter_DDP_motor", "Jitter DDP", value = 0.551717473, min = 0, max = 1, step = 0.01)
+                    numericInput("Shimmer_total", "Shimmer", value = 0.02565, min = 0, max = 1, step = 0.01),
+                    numericInput("Shimmer_APQ3_total", "Shimmer APQ3", value = 0.01438, min = 0, max = 1, step = 0.01),
+                    numericInput("Shimmer_dB_total", "Shimmer dB", value = 0.23, min = 0, max = 1, step = 0.01),
+                    numericInput("Jitter_PPQ5_total", "Jitter PPQ5", value = 0.00317, min = 0, max = 1, step = 0.01),
+                    numericInput("Shimmer_APQ5", "Shimmer APQ5", value = 0.01309, min = 0, max = 1, step = 0.01),
+                    numericInput("DFA", "DFA", value = 0.54842, min = 0, max = 1, step = 0.01),
+                    numericInput("NHR_motor", "NHR", value = 0.01429, min = 0, max = 1, step = 0.01),
+                    numericInput("Jitter_DDP_motor", "Jitter DDP", value = 0.01204, min = 0, max = 1, step = 0.01)
              )
            )
     ),
@@ -118,42 +123,45 @@ server <- function(input, output) {
   observeEvent(input$predictButton, {
     # Create data frame with input variables for motor UPDRS
     new_data_motor <- data.frame(
-      Jitter.RAP = input$Jitter,
-      Jitter.Abs. = input$Jitter_Abs,
-      HNR = input$HNR,
-      age = input$age,
-      Shimmer.APQ11 = input$Shimmer_APQ11,
-      PPE = input$PPE,
-      Jitter... = input$Jitter_motor,
-      Shimmer.DDA = input$Shimmer_DDA_motor,
-      NHR = input$NHR_motor,
-      Shimmer.APQ5 = input$Shimmer_APQ5,
-      DFA = input$DFA,
-      Jitter.DDP = input$Jitter_DDP_motor
+      Jitter.RAP = min_max_scaling(input$Jitter,0.05754,0.00033),
+      Jitter.Abs. = min_max_scaling(input$Jitter_Abs,0.00044559,0.00000225),
+      HNR = min_max_scaling(input$HNR,37.875,1.659),
+      age = min_max_scaling(input$age,85,36),
+      Shimmer.APQ11 = min_max_scaling(input$Shimmer_APQ11,0.275466,0.00249),
+      PPE = min_max_scaling(input$PPE,0.73173,0.021983),
+      Jitter... = min_max_scaling(input$Jitter_motor,0.09999,0.00083),
+      Shimmer.DDA = min_max_scaling(input$Shimmer_DDA_motor,0.48802,0.00484),
+      NHR = min_max_scaling(input$NHR_motor,0.74826,0.000286),
+      Shimmer.APQ5 = min_max_scaling(input$Shimmer_APQ5,0.16702,0.00194),
+      DFA = min_max_scaling(input$DFA,0.8656,0.51404),
+      Jitter.DDP = min_max_scaling(input$Jitter_DDP_motor,0.17263,0.00098)
     )
     
     # Create data frame with input variables for total UPDRS
     new_data_total <- data.frame(
-      age = input$age,
-      Jitter.RAP = input$Jitter,
-      Shimmer = input$Shimmer_total,
-      Shimmer.APQ3 = input$Shimmer_APQ3_total,
-      Jitter.Abs. = input$Jitter_Abs,
-      HNR = input$HNR,
-      Shimmer.dB. = input$Shimmer_dB_total,
-      Shimmer.APQ11 = input$Shimmer_APQ11,
-      PPE = input$PPE,
-      Jitter.PPQ5 = input$Jitter_PPQ5_total,
-      Shimmer.APQ5 = input$Shimmer_APQ5,
-      DFA = input$DFA
+      NHR = min_max_scaling(input$NHR_motor,0.74826,0.000286),
+      Shimmer.DDA = min_max_scaling(input$Shimmer_DDA_motor,0.48802,0.00484),
+      
+      age = min_max_scaling(input$age,85,36),
+      Jitter.RAP = min_max_scaling(input$Jitter,0.05754,0.00033),
+      Shimmer = min_max_scaling(input$Shimmer_total,0.26863,0.00306),
+      Shimmer.APQ3 = min_max_scaling(input$Shimmer_APQ3_total,0.16267,0.00161),
+      Jitter.Abs. = min_max_scaling(input$Jitter_Abs,0.00044559,0.00000225),
+      HNR = min_max_scaling(input$HNR,37.875,1.659),
+      Shimmer.dB. = min_max_scaling(input$Shimmer_dB_total,2.107,0.026),
+      Shimmer.APQ11 = min_max_scaling(input$Shimmer_APQ11,0.275466,0.00249),
+      PPE = min_max_scaling(input$PPE,0.73173,0.021983),
+      Jitter.PPQ5 = min_max_scaling(input$Jitter_PPQ5_total,0.06956,0.00043),
+      Shimmer.APQ5 = min_max_scaling(input$Shimmer_APQ5,0.16702,0.00194),
+      DFA = min_max_scaling(input$DFA,0.8656,0.51404)
     )
-    
+ #Github - AtharvaKulkarniIT   
     # Make predictions
     preds <- predict_UPDRS(new_data_motor, new_data_total)
     
     # Unscaled predicted values
     unscaled_motor_UPDRS <- unscale(preds[[1]], 5, 40 )
-    unscaled_total_UPDRS <- unscale(preds[[2]], 7, 52 )
+    unscaled_total_UPDRS <- unscale(preds[[2]], 7, 55 )
     
     # Interpret severity
     motor_severity <- interpret_severity(unscaled_motor_UPDRS, motor = TRUE)
