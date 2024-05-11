@@ -1,21 +1,31 @@
-MIT License
+LICENSE AGREEMENT
 
-Copyright (c) 2024 Atharva Kulkarni
+This License Agreement ("Agreement") is made and entered into as of 11 May, 2024, by and between Atharva Kulkarni, an individual residing in India ("Licensor").
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+WHEREAS, Licensor, Atharva Kulkarni, owns certain rights to proprietary technology;
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+WHEREAS, Licensee desires to obtain a license under the technology for the purposes set forth herein;
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+NOW, THEREFORE, in consideration of the mutual covenants contained herein and other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:
+
+1. Confidentiality. Licensor agrees to maintain the confidentiality of any proprietary or confidential information disclosed by Licensee in connection with this Agreement.
+
+2. Governing Law. This Agreement shall be governed by and construed in accordance with the laws of India, without regard to its conflicts of law principles.
+
+3. Entire Agreement. This Agreement constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior and contemporaneous agreements and understandings, whether written or oral, relating to such subject matter.
+
+4. Academic Use. Licensor grants students the right to use the licensed technology as part of academic projects, provided that proper credit is given to Licensor, Atharva Kulkarni, for granting the license.
+
+5. No Research Publishing. Licensor agrees not to publish or otherwise disclose any research findings or data derived from the use of the licensed technology without prior written consent from Licensee.
+
+6. No Commercial Use. The licensed technology shall not be used for commercial purposes without prior written consent from Licensee.
+
+7. No Replication. Licensor agrees not to create a new GitHub repository or upload the same or similar code on any platform that replicates or competes with the licensed technology.
+
+8. Legal Action. Licensee reserves the right to take legal action for any violation of this Agreement.
+
+IN WITNESS WHEREOF, Licensor has executed this Agreement as of the Effective Date.
+
+Atharva Kulkarni
+
+Owner of License
