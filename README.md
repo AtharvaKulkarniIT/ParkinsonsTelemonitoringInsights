@@ -28,7 +28,7 @@ This data science project in R aims to predict the severity of Parkinson's disea
 
 ## Dataset
 
-We use the [UCI Parkinsons dataset](https://archive.ics.uci.edu/dataset/189/parkinsons+telemonitoring) for this data science project. The dataset includes information about various symptoms and features related to Parkinson's disease.
+We use the [UCI Parkinsons dataset](https://archive.ics.uci.edu/dataset/189/parkinsons+telemonitoring) for this data science project. The dataset includes information about various symptoms and features related to Parkinson's disease.Motor UPDRS and Total UPDRS are target variables in this dataset.
 
 ## Preprocessing
 
